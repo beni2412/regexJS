@@ -26,7 +26,8 @@
         </div>
         <div>
             <label for="url">URL : </label>
-            <input type="url" id="url" name="url">
+            <input type="url" id="url" name="url" placeholder="https://example.com">
+            <error-output class="url-error" for="url"></error-output>
         </div>
         <div>
             <label for="number">Number input type: </label>
@@ -90,6 +91,15 @@
             if(passRegex.test(pwd.value))
             pwdError.textContent="";
             else pwdError.textContent="Invalid Password";          
+        });
+
+        const url = document.querySelector('#url');
+        const urlError = document.querySelector('.url-error');
+        url.addEventListener('input',function(){
+            let urlRegex = RegExp('^(https?|chrome):\/\/[^\s$.?#].[^\s]*$');
+            if(urlRegex.test(url.value))
+            urlError.textContent="";
+            else urlError.textError="Invalid URL."; 
         });
 
         const salary = document.querySelector('#salary');
